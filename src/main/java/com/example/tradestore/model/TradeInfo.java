@@ -1,4 +1,4 @@
-package model;
+package com.example.tradestore.model;
 
 import lombok.Builder;
 import lombok.Data;

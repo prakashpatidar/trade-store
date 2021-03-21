@@ -1,8 +1,8 @@
-package store;
+package com.example.tradestore.store;
 
-import exception.LowerTradeVersionException;
-import exception.MaturityDateExpiredException;
-import model.TradeInfo;
+import com.example.tradestore.exception.LowerTradeVersionException;
+import com.example.tradestore.exception.MaturityDateExpiredException;
+import com.example.tradestore.model.TradeInfo;
 
 import java.util.Optional;
 

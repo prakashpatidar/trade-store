@@ -1,6 +1,6 @@
-package db;
+package com.example.tradestore.db;
 
-import model.TradeInfo;
+import com.example.tradestore.model.TradeInfo;
 
 import java.util.Optional;
 
