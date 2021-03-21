@@ -11,14 +11,18 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class InMemoryTradeDB implements TradeDb{
-    ExpiringMap<String,TradeInfo> tradeData;
+    final private ExpiringMap<String,TradeInfo> tradeData;
     public InMemoryTradeDB(){
         tradeData=ExpiringMap.builder().variableExpiration()
-                .expirationListener((ExpirationListener<String, TradeInfo>) (tradeId, tradeInfo) -> {
-                    tradeInfo.setExpired(true);
-                    tradeData.put(tradeId,tradeInfo);
-                })
+                .expirationListener(tradeExpiryListener())
                 .build();
+    }
+
+    private ExpirationListener<String, TradeInfo> tradeExpiryListener() {
+        return (tradeId, tradeInfo) -> {
+            tradeInfo.setExpired(true);
+            tradeData.put(tradeId, tradeInfo);
+        };
     }
 
     @Override
