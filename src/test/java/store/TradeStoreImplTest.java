@@ -29,13 +29,5 @@ class TradeStoreImplTest {
                 .maturityDate(LocalDate.now().plusDays(1)).createdDate(LocalDate.now()).build();
         assertThrows(MaturityDateExpiredException.class,()->tradeStore.processTrade(maturityExpiredTrade));
     }
-    @Test
-    void checkAutomaticExpiryLogic() throws MaturityDateExpiredException, LowerTradeVersionException {
-        TradeStore tradeStore=new TradeStoreImpl();
-        TradeInfo maturityExpiredTrade= TradeInfo.builder().tradeId("T1").version(1).counterPartyId("CP-1").bookId("B1")
-                .maturityDate(LocalDate.now()).createdDate(LocalDate.now()).build();
-        tradeStore.autoExpireTrades();
-        assertTrue(tradeStore.getTradeById("T1").isExpired());
-    }
 
 }
