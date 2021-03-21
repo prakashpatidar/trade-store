@@ -22,12 +22,12 @@ class TradeStoreImplTest {
         assertThrows(LowerTradeVersionException.class,()->tradeStore.processTrade(lowerVersionTrade));
 
     }
+
     @Test
-    void processMaturityExpiredTrade() throws MaturityDateExpiredException, LowerTradeVersionException {
+    void processMaturityExpiredTrade() {
         TradeStore tradeStore=new TradeStoreImpl();
         TradeInfo maturityExpiredTrade= TradeInfo.builder().tradeId("T1").version(1).counterPartyId("CP-1").bookId("B1")
-                .maturityDate(LocalDate.now().plusDays(1)).createdDate(LocalDate.now()).build();
+                .maturityDate(LocalDate.now().minusDays(1)).createdDate(LocalDate.now()).build();
         assertThrows(MaturityDateExpiredException.class,()->tradeStore.processTrade(maturityExpiredTrade));
     }
-
 }

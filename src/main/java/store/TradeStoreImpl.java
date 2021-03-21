@@ -5,7 +5,6 @@ import db.TradeDb;
 import exception.LowerTradeVersionException;
 import exception.MaturityDateExpiredException;
 import model.TradeInfo;
-import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.LocalDate;
 import java.util.Optional;
